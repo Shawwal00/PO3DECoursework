@@ -65,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("Backwards", true);
 
             Rigidbody ourBody = this.GetComponent<Rigidbody>();
-            float movement = Mathf.Lerp(0f, -0.02f, elapsedTime);
+            float movement = Mathf.Lerp(-0.02f, 0f, elapsedTime);
             Vector3 moveBack = new Vector3(0.0f, 0.0f, movement);
             moveBack = ourBody.transform.TransformDirection(moveBack);
             ourBody.transform.position += moveBack;
