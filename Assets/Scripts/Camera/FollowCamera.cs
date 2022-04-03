@@ -64,9 +64,10 @@ public class FollowCamera : MonoBehaviour
             Ray thirdRay = new Ray(transform.position, (ethan.transform.position - transform.position) + new Vector3(0, 1.5f, 0));
             RaycastHit hitData;
             Physics.Raycast(thirdRay, out hitData);
+            Debug.DrawRay(transform.position, (ethan.transform.position - transform.position) + new Vector3(0, 1.5f, 0), color: Color.black);
 
             if (hitData.collider.tag == "Player")
-            { 
+            {
                 ThirdCam.enabled = true;
                 TopDownCam.enabled = false;
             }

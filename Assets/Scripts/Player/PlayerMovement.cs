@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private float pitchValue = 0.27f;
     private float elapsedTime = 0;
     private bool noBackMov = true;
-
+    
     public void Awake()
     {
         anim = GetComponent<Animator>();
