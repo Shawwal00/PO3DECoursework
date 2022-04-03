@@ -11,6 +11,7 @@ public class TopDownCamera : MonoBehaviour
     public void Start()
     {
         offset = transform.position + target.transform.position;
+        target = GameObject.Find("CameraTarget");
     }
 
     private void LateUpdate()
@@ -18,5 +19,11 @@ public class TopDownCamera : MonoBehaviour
         Vector3 desiredPosition = target.transform.position + offset;
         transform.position = desiredPosition;
         transform.LookAt(target.transform.position);
+
+
+        if (Input.GetKey(KeyCode.P))
+        {
+            target = GameObject.Find("Ship");
+        }
     }
 }

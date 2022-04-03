@@ -17,6 +17,9 @@ public class FollowCamera : MonoBehaviour
 
     private void Start()
     {
+        target = GameObject.Find("CameraTarget");
+        ethan = GameObject.Find("char_ethan");
+
         offset = transform.position - target.transform.position;
     }
 
@@ -81,7 +84,7 @@ public class FollowCamera : MonoBehaviour
 
         else if (TopDownCam.enabled == true)
         {
-          //  Debug.DrawRay(transform.position, (ethan.transform.position - transform.position) + new Vector3(0,1.5f,0), color: Color.black);
+            Debug.DrawRay(transform.position, (ethan.transform.position - transform.position) + new Vector3(0,1.5f,0), color: Color.black);
             Ray topRay = new Ray(transform.position, ethan.transform.position - transform.position);
             RaycastHit hitData;
             Physics.Raycast(topRay, out hitData);
@@ -97,6 +100,12 @@ public class FollowCamera : MonoBehaviour
                 ThirdCam.enabled = false;
                 TopDownCam.enabled = true;
             }
+        }
+
+        if (Input.GetKey(KeyCode.P))
+        {
+            target = GameObject.Find("Ship");
+            ethan = GameObject.Find("Ship");
         }
     }
 

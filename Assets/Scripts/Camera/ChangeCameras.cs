@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class ChangeCameras : MonoBehaviour
 {
-    Renderer objectRenderer;
 
-    private void Start()
-    {
-        
-             
-    }
 
 }
