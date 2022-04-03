@@ -3,7 +3,8 @@ guid: 8f170f870a041574eb6c57b8ce519284
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - shoutingClip: {fileID: 8300000, guid: f2e0ffd43812bf642a502c434b572c75, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

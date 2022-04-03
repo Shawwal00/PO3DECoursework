@@ -1,4 +1,4 @@
-wusing System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +6,7 @@ public class TopDownCamera : MonoBehaviour
 {
     public GameObject target;
     public Vector3 offset;
+
 
     public void Start()
     {

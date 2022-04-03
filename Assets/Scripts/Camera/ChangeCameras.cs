@@ -8,7 +8,7 @@ public class ChangeCameras : MonoBehaviour
 
     private void Start()
     {
-        objectRenderer = GetComponent<Renderer>
+        
              
     }
 

@@ -5,11 +5,15 @@ using UnityEngine;
 public class FollowCamera : MonoBehaviour
 {
     public GameObject target;
+    public GameObject ethan;
     public Vector3 offset;
 
     private float mouseX;
     private float mouseY;
     private float mouseZ;
+
+    public Camera ThirdCam;
+    public Camera TopDownCam;
 
     private void Start()
     {
@@ -55,9 +59,44 @@ public class FollowCamera : MonoBehaviour
         transform.position = target.transform.position + (rotation * offset);
         transform.LookAt(target.transform);
 
-        if ()
+        if (ThirdCam.enabled == true)
         {
-            
+            Ray thirdRay = new Ray(transform.position, (ethan.transform.position - transform.position) + new Vector3(0, 1.5f, 0));
+            RaycastHit hitData;
+            Physics.Raycast(thirdRay, out hitData);
+
+            if (hitData.collider.tag == "Player")
+            { 
+                ThirdCam.enabled = true;
+                TopDownCam.enabled = false;
+            }
+
+            else
+            {
+                ThirdCam.enabled = false;
+                TopDownCam.enabled = true;
+            }
+        }
+
+        else if (TopDownCam.enabled == true)
+        {
+          //  Debug.DrawRay(transform.position, (ethan.transform.position - transform.position) + new Vector3(0,1.5f,0), color: Color.black);
+            Ray topRay = new Ray(transform.position, ethan.transform.position - transform.position);
+            RaycastHit hitData;
+            Physics.Raycast(topRay, out hitData);
+
+            if (hitData.collider.tag == "Player")
+            {
+                ThirdCam.enabled = true;
+                TopDownCam.enabled = false;
+            }
+
+            else
+            {
+                ThirdCam.enabled = false;
+                TopDownCam.enabled = true;
+            }
         }
     }
-}
+
+} 
