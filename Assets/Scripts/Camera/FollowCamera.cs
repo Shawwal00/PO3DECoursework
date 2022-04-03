@@ -14,9 +14,11 @@ public class FollowCamera : MonoBehaviour
 
     public Camera ThirdCam;
     public Camera TopDownCam;
+    public Camera PIP;
 
     private void Start()
     {
+      //  PIP.enabled = true;
         target = GameObject.Find("CameraTarget");
         ethan = GameObject.Find("char_ethan");
 
@@ -93,19 +95,22 @@ public class FollowCamera : MonoBehaviour
             {
                 ThirdCam.enabled = true;
                 TopDownCam.enabled = false;
+                PIP.enabled = true;
             }
 
             else
             {
                 ThirdCam.enabled = false;
                 TopDownCam.enabled = true;
+                PIP.enabled = true;
             }
         }
 
         if (Input.GetKey(KeyCode.P))
         {
-            target = GameObject.Find("Ship");
-            ethan = GameObject.Find("Ship");
+            target = GameObject.Find("cameraFocus");
+            ethan = GameObject.Find("cameraFocus");
+
         }
     }
 

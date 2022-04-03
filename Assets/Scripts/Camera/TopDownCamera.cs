@@ -23,7 +23,7 @@ public class TopDownCamera : MonoBehaviour
 
         if (Input.GetKey(KeyCode.P))
         {
-            target = GameObject.Find("Ship");
+            target = GameObject.Find("cameraFocus");
         }
     }
 }
