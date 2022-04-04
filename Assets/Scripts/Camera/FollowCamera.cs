@@ -6,6 +6,7 @@ public class FollowCamera : MonoBehaviour
 {
     public GameObject target;
     public GameObject ethan;
+    public GameObject destroyEthan;
     public Vector3 offset;
 
     private float mouseX;
@@ -47,7 +48,14 @@ public class FollowCamera : MonoBehaviour
             }
         }
 
-        float dist = Vector3.Distance(target.transform.position, transform.position);
+        if (ethan == null)
+        {
+
+        }
+
+        else
+        {
+            float dist = Vector3.Distance(target.transform.position, transform.position);
 
             if ((mouseZ > 0) && (dist < 10))
             {
@@ -59,59 +67,64 @@ public class FollowCamera : MonoBehaviour
                 offset = Vector3.Scale(offset, new Vector3(0.95f, 0.95f, 0.95f));
             }
 
-        float desiredAngle = target.transform.eulerAngles.y;
-        Quaternion rotation = Quaternion.Euler(0, desiredAngle, 0);
-        transform.position = target.transform.position + (rotation * offset);
-        transform.LookAt(target.transform);
+            float desiredAngle = target.transform.eulerAngles.y;
+            Quaternion rotation = Quaternion.Euler(0, desiredAngle, 0);
+            transform.position = target.transform.position + (rotation * offset);
+            transform.LookAt(target.transform);
 
-        if (ThirdCam.enabled == true)
-        {
-            Ray thirdRay = new Ray(transform.position, (ethan.transform.position - transform.position) + new Vector3(0, 1.5f, 0));
-            RaycastHit hitData;
-            Physics.Raycast(thirdRay, out hitData);
-            Debug.DrawRay(transform.position, (ethan.transform.position - transform.position) + new Vector3(0, 1.5f, 0), color: Color.black);
 
-            if (hitData.collider.tag == "Player")
+            if (ThirdCam.enabled == true)
             {
-                ThirdCam.enabled = true;
-                TopDownCam.enabled = false;
+                Ray thirdRay = new Ray(transform.position, (ethan.transform.position - transform.position) + new Vector3(0, 1.5f, 0));
+                RaycastHit hitData;
+                Physics.Raycast(thirdRay, out hitData);
+                Debug.DrawRay(transform.position, (ethan.transform.position - transform.position) + new Vector3(0, 1.5f, 0), color: Color.black);
+
+                if (hitData.collider.tag == "Player")
+                {
+                    ThirdCam.enabled = true;
+                    TopDownCam.enabled = false;
+                }
+
+                else
+                {
+                    ThirdCam.enabled = false;
+                    TopDownCam.enabled = true;
+                }
             }
 
-            else
+            else if (TopDownCam.enabled == true)
             {
-                ThirdCam.enabled = false;
-                TopDownCam.enabled = true;
+                Debug.DrawRay(transform.position, (ethan.transform.position - transform.position) + new Vector3(0, 1.5f, 0), color: Color.black);
+                Ray topRay = new Ray(transform.position, ethan.transform.position - transform.position);
+                RaycastHit hitData;
+                Physics.Raycast(topRay, out hitData);
+
+                if (hitData.collider.tag == "Player")
+                {
+                    ThirdCam.enabled = true;
+                    TopDownCam.enabled = false;
+                    PIP.enabled = true;
+                }
+
+                else
+                {
+                    ThirdCam.enabled = false;
+                    TopDownCam.enabled = true;
+                    PIP.enabled = true;
+                }
             }
         }
 
-        else if (TopDownCam.enabled == true)
+        if (Input.GetKey(KeyCode.O))
         {
-            Debug.DrawRay(transform.position, (ethan.transform.position - transform.position) + new Vector3(0,1.5f,0), color: Color.black);
-            Ray topRay = new Ray(transform.position, ethan.transform.position - transform.position);
-            RaycastHit hitData;
-            Physics.Raycast(topRay, out hitData);
+            destroyEthan = ethan;
 
-            if (hitData.collider.tag == "Player")
-            {
-                ThirdCam.enabled = true;
-                TopDownCam.enabled = false;
-                PIP.enabled = true;
-            }
-
-            else
-            {
-                ThirdCam.enabled = false;
-                TopDownCam.enabled = true;
-                PIP.enabled = true;
-            }
-        }
-
-        if (Input.GetKey(KeyCode.P))
-        {
             target = GameObject.Find("cameraFocus");
             ethan = GameObject.Find("cameraFocus");
 
+            Destroy(destroyEthan);
+
         }
     }
-
 } 
