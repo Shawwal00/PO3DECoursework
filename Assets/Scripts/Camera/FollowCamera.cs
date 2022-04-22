@@ -72,7 +72,6 @@ public class FollowCamera : MonoBehaviour
             transform.position = target.transform.position + (rotation * offset);
             transform.LookAt(target.transform);
 
-
             if (ThirdCam.enabled == true)
             {
                 Ray thirdRay = new Ray(transform.position, (ethan.transform.position - transform.position) + new Vector3(0, 1.5f, 0));
@@ -116,7 +115,7 @@ public class FollowCamera : MonoBehaviour
             }
         }
 
-        if (Input.GetKey(KeyCode.O))
+        if (Input.GetKey(KeyCode.P))
         {
             destroyEthan = ethan;
 

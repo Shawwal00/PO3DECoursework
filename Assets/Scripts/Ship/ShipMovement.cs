@@ -19,22 +19,22 @@ public class ShipMovement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            transform.Translate(Vector3.up * Time.deltaTime * speed);
+            transform.Translate(Vector3.up * (Time.deltaTime * speed));
         }
 
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            transform.Translate(Vector3.down * Time.deltaTime * speed);
+            transform.Translate(Vector3.down * (Time.deltaTime * speed));
         }
 
         if (Input.GetKey(KeyCode.W))
         {
-            transform.Translate(Vector3.right* Time.deltaTime * speed);
+            transform.Translate(Vector3.right * (Time.deltaTime * speed));
         }
 
         if (Input.GetKey(KeyCode.S))
         {
-            transform.Translate(Vector3.left * Time.deltaTime * speed);
+            transform.Translate(Vector3.left * (Time.deltaTime * speed));
         }
 
 
