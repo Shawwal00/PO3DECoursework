@@ -16,18 +16,11 @@ public class TopDownCamera : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (target == null)
-        {
+        Vector3 desiredPosition = target.transform.position + offset;
+        transform.position = desiredPosition;
+        transform.LookAt(target.transform.position);
 
-        }
-        else
-        {
-            Vector3 desiredPosition = target.transform.position + offset;
-            transform.position = desiredPosition;
-            transform.LookAt(target.transform.position);
-        }
-
-        if (Input.GetKey(KeyCode.O))
+            if (Input.GetKey(KeyCode.P))
         {
             target = GameObject.Find("cameraFocus");
         }

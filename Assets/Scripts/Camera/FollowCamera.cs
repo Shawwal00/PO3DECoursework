@@ -1,17 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class FollowCamera : MonoBehaviour
 {
     public GameObject target;
-    public GameObject ethan;
-    public GameObject destroyEthan;
+    public GameObject body;
+    private GameObject deleteEthan;
+    public GameObject gameController;
     public Vector3 offset;
 
     private float mouseX;
     private float mouseY;
     private float mouseZ;
+    private CurrentObject currentObject;
 
     public Camera ThirdCam;
     public Camera TopDownCam;
@@ -21,9 +25,14 @@ public class FollowCamera : MonoBehaviour
     {
       //  PIP.enabled = true;
         target = GameObject.Find("CameraTarget");
-        ethan = GameObject.Find("char_ethan");
+        body = GameObject.Find("char_ethan");
+
+        deleteEthan = GameObject.Find("char_ethan");
+
 
         offset = transform.position - target.transform.position;
+        currentObject = gameController.GetComponent<CurrentObject>();
+        currentObject.shipEnabled = false;
     }
 
     private void LateUpdate()
@@ -48,11 +57,6 @@ public class FollowCamera : MonoBehaviour
             }
         }
 
-        if (ethan == null)
-        {
-
-        }
-
         else
         {
             float dist = Vector3.Distance(target.transform.position, transform.position);
@@ -74,10 +78,10 @@ public class FollowCamera : MonoBehaviour
 
             if (ThirdCam.enabled == true)
             {
-                Ray thirdRay = new Ray(transform.position, (ethan.transform.position - transform.position) + new Vector3(0, 1.5f, 0));
+                Ray thirdRay = new Ray(transform.position, (body.transform.position - transform.position) + new Vector3(0, 1.5f, 0));
                 RaycastHit hitData;
                 Physics.Raycast(thirdRay, out hitData);
-                Debug.DrawRay(transform.position, (ethan.transform.position - transform.position) + new Vector3(0, 1.5f, 0), color: Color.black);
+                Debug.DrawRay(transform.position, (body.transform.position - transform.position) + new Vector3(0, 1.5f, 0), color: Color.black);
 
                 if (hitData.collider.tag == "Player")
                 {
@@ -94,8 +98,8 @@ public class FollowCamera : MonoBehaviour
 
             else if (TopDownCam.enabled == true)
             {
-                Debug.DrawRay(transform.position, (ethan.transform.position - transform.position) + new Vector3(0, 1.5f, 0), color: Color.black);
-                Ray topRay = new Ray(transform.position, ethan.transform.position - transform.position);
+                Debug.DrawRay(transform.position, (body.transform.position - transform.position) + new Vector3(0, 1.5f, 0), color: Color.black);
+                Ray topRay = new Ray(transform.position, body.transform.position - transform.position);
                 RaycastHit hitData;
                 Physics.Raycast(topRay, out hitData);
 
@@ -117,13 +121,18 @@ public class FollowCamera : MonoBehaviour
 
         if (Input.GetKey(KeyCode.P))
         {
-            destroyEthan = ethan;
+            currentObject.shipEnabled = true;
+        }
+    }
 
+    private void Update()
+    {
+        if (currentObject.shipEnabled == true)
+        {
             target = GameObject.Find("cameraFocus");
-            ethan = GameObject.Find("cameraFocus");
-
-            Destroy(destroyEthan);
-
+            body = GameObject.Find("Ship");
+            Destroy(deleteEthan);
+            
         }
     }
 } 

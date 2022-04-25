@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,35 +11,46 @@ public class ShipMovement : MonoBehaviour
     public float speedDampTime = 0.01f;
     public float sensitivityX = 1.0f;
     private float speed = 10;
+    public GameObject gameController;
+    private CurrentObject currentObject; // Script
 
+
+    private void Start()
+    {
+       currentObject = gameController.GetComponent<CurrentObject>();
+    }
 
     public void FixedUpdate()
     {
         float turn = Input.GetAxis("Turn");
         elapsedTime += Time.deltaTime;
 
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (currentObject.shipEnabled == true)
         {
-            transform.Translate(Vector3.up * (Time.deltaTime * speed));
+
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                transform.Translate(Vector3.up * (Time.deltaTime * speed));
+            }
+
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                transform.Translate(Vector3.down * (Time.deltaTime * speed));
+            }
+
+            if (Input.GetKey(KeyCode.W))
+            {
+                transform.Translate(Vector3.right * (Time.deltaTime * speed));
+            }
+
+            if (Input.GetKey(KeyCode.S))
+            {
+                transform.Translate(Vector3.left * (Time.deltaTime * speed));
+            }
+
+
+            Rotating(turn);
         }
-
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            transform.Translate(Vector3.down * (Time.deltaTime * speed));
-        }
-
-        if (Input.GetKey(KeyCode.W))
-        {
-            transform.Translate(Vector3.right * (Time.deltaTime * speed));
-        }
-
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.Translate(Vector3.left * (Time.deltaTime * speed));
-        }
-
-
-        Rotating(turn);
     }
 
     void Rotating(float mouseXInput)
