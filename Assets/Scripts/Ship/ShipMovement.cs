@@ -27,7 +27,7 @@ public class ShipMovement : MonoBehaviour
 
         if (currentObject.shipEnabled == true)
         {
-
+            
             if (Input.GetKey(KeyCode.UpArrow))
             {
                 transform.Translate(Vector3.up * (Time.deltaTime * speed));

@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
         anim.SetBool(hash.sneakingBool, sneaking);
 
         if (vertical > 0)
-        {
+        { 
             noBackMov = true;
             anim.SetFloat(hash.speedFloat, 1.5f, speedDampTime, Time.deltaTime);
             anim.SetBool("Backwards", false);
@@ -71,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
             ourBody.transform.position += moveBack;
         }
         else if (vertical == 0)
-        {
+        { 
             noBackMov = true;
             anim.SetFloat(hash.speedFloat, 0.01f);
             anim.SetBool(hash.backwardsBool, false);
