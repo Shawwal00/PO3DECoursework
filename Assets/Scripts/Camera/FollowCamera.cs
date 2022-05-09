@@ -23,7 +23,7 @@ public class FollowCamera : MonoBehaviour
 
     private void Start()
     {
-      //  PIP.enabled = true;
+        PIP.enabled = true;
         target = GameObject.Find("CameraTarget");
         body = GameObject.Find("char_ethan");
 
@@ -107,14 +107,12 @@ public class FollowCamera : MonoBehaviour
                 {
                     ThirdCam.enabled = true;
                     TopDownCam.enabled = false;
-                    PIP.enabled = true;
                 }
 
                 else
                 {
                     ThirdCam.enabled = false;
                     TopDownCam.enabled = true;
-                    PIP.enabled = true;
                 }
             }
         }

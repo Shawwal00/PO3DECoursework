@@ -59,6 +59,11 @@ public class ShipMovement : MonoBehaviour
                 anim.SetInteger("State", 5);
             }
 
+            if (!Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.DownArrow) &&
+                !Input.GetKey(KeyCode.UpArrow) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
+            {
+                anim.SetInteger("State", 0);
+            }
 
             Rotating(turn);
         }
