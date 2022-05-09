@@ -38,21 +38,25 @@ public class ShipMovement : MonoBehaviour
             if (Input.GetKey(KeyCode.UpArrow))
             {
                 transform.Translate(Vector3.up * (Time.deltaTime * speed));
+                anim.SetInteger("State", 6);
             }
 
             if (Input.GetKey(KeyCode.DownArrow))
             {
                 transform.Translate(Vector3.down * (Time.deltaTime * speed));
+                anim.SetInteger("State", 3);
             }
 
             if (Input.GetKey(KeyCode.W))
             {
                 transform.Translate(Vector3.right * (Time.deltaTime * speed));
+                anim.SetInteger("State", 1);
             }
 
             if (Input.GetKey(KeyCode.S))
             {
                 transform.Translate(Vector3.left * (Time.deltaTime * speed));
+                anim.SetInteger("State", 5);
             }
 
 
@@ -71,9 +75,20 @@ public class ShipMovement : MonoBehaviour
             //if so we use mouseX value to create a Euler angle which provides rotation in the Y axis
             //which is then turned to a Quaternion
             Quaternion deltaRotation = Quaternion.Euler(0f, mouseXInput * sensitivityX, 0f);
+           
 
             //and then applied to turn the avatar via the rigidbody
             ourBody.MoveRotation(ourBody.rotation * deltaRotation);
+        }
+
+        if (mouseXInput < 0)
+        {
+            anim.SetInteger("State", 4);
+        }
+        
+        if (mouseXInput > 0)
+        {
+            anim.SetInteger("State", 2);
         }
     }
 

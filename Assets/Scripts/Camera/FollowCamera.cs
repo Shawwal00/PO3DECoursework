@@ -61,7 +61,7 @@ public class FollowCamera : MonoBehaviour
         {
             float dist = Vector3.Distance(target.transform.position, transform.position);
 
-            if ((mouseZ > 0) && (dist < 10))
+            if ((mouseZ > 0) && (dist < 15))
             {
                 offset = Vector3.Scale(offset, new Vector3(1.05f, 1.05f, 1.05f));
             }

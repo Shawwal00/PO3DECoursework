@@ -11,6 +11,7 @@ TagManager:
   - WayPoint
   - Siren
   - Alarm
+  - Ship
   layers:
   - Default
   - TransparentFX
