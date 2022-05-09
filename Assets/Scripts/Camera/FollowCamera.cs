@@ -20,10 +20,11 @@ public class FollowCamera : MonoBehaviour
     public Camera ThirdCam;
     public Camera TopDownCam;
     public Camera PIP;
-
+    public Camera FrontPIP;
     private void Start()
     {
-        PIP.enabled = true;
+        PIP.enabled = false;
+        FrontPIP.enabled = false;
         target = GameObject.Find("CameraTarget");
         body = GameObject.Find("char_ethan");
 
@@ -120,6 +121,8 @@ public class FollowCamera : MonoBehaviour
         if (Input.GetKey(KeyCode.P))
         {
             currentObject.shipEnabled = true;
+            PIP.enabled = true;
+            FrontPIP.enabled = true;
         }
     }
 
