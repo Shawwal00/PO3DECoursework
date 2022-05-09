@@ -13,7 +13,14 @@ public class ShipMovement : MonoBehaviour
     private float speed = 10;
     public GameObject gameController;
     private CurrentObject currentObject; // Script
+    private Animator anim;
+    private GameObject ship;
 
+    private void Awake()
+    {
+        ship = GameObject.FindGameObjectWithTag("Ship");
+        anim = ship.GetComponent<Animator>();
+    }
 
     private void Start()
     {
@@ -27,7 +34,7 @@ public class ShipMovement : MonoBehaviour
 
         if (currentObject.shipEnabled == true)
         {
-            
+            anim.SetBool("Active", true);
             if (Input.GetKey(KeyCode.UpArrow))
             {
                 transform.Translate(Vector3.up * (Time.deltaTime * speed));
