@@ -9,3 +9,16 @@ Assets/SkySeries[[:space:]]Freebie.meta filter=lfs diff=lfs merge=lfs -text
 Assets/SkySeries[[:space:]]Freebie/ExampleScenes/* filter=lfs diff=lfs merge=lfs -text
 Assets/SkySeries[[:space:]]Freebie/ExampleScenes/SceneObjects/* filter=lfs diff=lfs merge=lfs -text
 Assets/SkySeries[[:space:]]Freebie/FreebieHdri/* filter=lfs diff=lfs merge=lfs -text
+*.meta filter=lfs diff=lfs merge=lfs -text
+Assets/* filter=lfs diff=lfs merge=lfs -text
+*.txt filter=lfs diff=lfs merge=lfs -text
+*.mat filter=lfs diff=lfs merge=lfs -text
+*.fbx filter=lfs diff=lfs merge=lfs -text
+*.prefab filter=lfs diff=lfs merge=lfs -text
+*.cs filter=lfs diff=lfs merge=lfs -text
+*.jpg filter=lfs diff=lfs merge=lfs -text
+*.png filter=lfs diff=lfs merge=lfs -text
+*.psd filter=lfs diff=lfs merge=lfs -text
+*.shader filter=lfs diff=lfs merge=lfs -text
+*.FBX filter=lfs diff=lfs merge=lfs -text
+*.cginc filter=lfs diff=lfs merge=lfs -text

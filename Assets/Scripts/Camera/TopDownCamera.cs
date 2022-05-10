@@ -1,28 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class TopDownCamera : MonoBehaviour
-{
-    public GameObject target;
-    public Vector3 offset;
-
-
-    public void Start()
-    {
-        offset = transform.position + target.transform.position;
-        target = GameObject.Find("CameraTarget");
-    }
-
-    private void LateUpdate()
-    {
-        Vector3 desiredPosition = target.transform.position + offset;
-        transform.position = desiredPosition;
-        transform.LookAt(target.transform.position);
-
-            if (Input.GetKey(KeyCode.P))
-        {
-            target = GameObject.Find("cameraFocus");
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:52711da09bb6e40dd72edbe1c6af81a2a33b1c390b87006a59d0d4e49a800566
+size 692

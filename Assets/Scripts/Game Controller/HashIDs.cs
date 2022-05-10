@@ -1,26 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class HashIDs : MonoBehaviour
-{
-    public int dyingState;
-    public int deadBool;
-    public int walkState;
-    public int shoutState;
-    public int speedFloat;
-    public int sneakingBool;
-    public int shoutingBool;
-    public int backwardsBool;
-    public void Awake() 
-    {
-        dyingState = Animator.StringToHash("Base Layer.Dying");
-        deadBool = Animator.StringToHash("Dead");
-        walkState = Animator.StringToHash("Walk");
-        shoutState = Animator.StringToHash("Shouting.Shout");
-        speedFloat = Animator.StringToHash("Speed");
-        sneakingBool = Animator.StringToHash("Sneaking");
-        shoutingBool = Animator.StringToHash("Shouting");
-        backwardsBool = Animator.StringToHash("Backwards");
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:94198eef7073b4183626929274c2416befbebf2b1c487bd4edc2c7e81823e30d
+size 860

@@ -1,12 +1,3 @@
-fileFormatVersion: 2
-guid: 8f170f870a041574eb6c57b8ce519284
-MonoImporter:
-  externalObjects: {}
-  serializedVersion: 2
-  defaultReferences:
-  - shoutingClip: {fileID: 8300000, guid: f2e0ffd43812bf642a502c434b572c75, type: 3}
-  executionOrder: 0
-  icon: {instanceID: 0}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
+version https://git-lfs.github.com/spec/v1
+oid sha256:6bf87524bab73511bec3472ead4292319942f96141b5422220cfdeac16b064f1
+size 337

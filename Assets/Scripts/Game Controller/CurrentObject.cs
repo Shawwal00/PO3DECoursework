@@ -1,14 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class CurrentObject : MonoBehaviour
-{
-    public bool shipEnabled;
-    // Start is called before the first frame update
-    void Start()
-    {
-        shipEnabled = false;
-    }
-
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:18eeca1d095573181a4561286be70095aca08b3eae8ae200f1e41b846426e891
+size 282
