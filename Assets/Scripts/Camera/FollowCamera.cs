@@ -121,7 +121,7 @@ public class FollowCamera : MonoBehaviour
         if (Input.GetKey(KeyCode.P))
         {
             currentObject.shipEnabled = true;
-            PIP.enabled = true;
+            PIP.enabled = true; 
             FrontPIP.enabled = true;
         }
     }
