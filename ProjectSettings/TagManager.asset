@@ -12,6 +12,9 @@ TagManager:
   - Siren
   - Alarm
   - Ship
+  - Fire
+  - Objective
+  - Attractor
   layers:
   - Default
   - TransparentFX
